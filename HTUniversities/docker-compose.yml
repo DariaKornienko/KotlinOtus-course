@@ -1,0 +1,23 @@
+services:
+  redis:
+    image: redis:8.2-m01-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - redis:/data
+
+  app:
+    build: .
+    container_name: kotlin-universities
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    stdin_open: true
+    tty: true
+
+volumes:
+  redis:

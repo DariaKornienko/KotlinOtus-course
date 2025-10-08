@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WizardWorldApiKtorTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-10-08T22:54:33.164Z" hostname="MacBook-Air-Dara.local" time="3.234">
+  <properties/>
+  <testcase name="Тест с ошибочным id зелья" classname="WizardWorldApiKtorTest" time="0.774"/>
+  <testcase name="Тест с ошибочным id заклинания" classname="WizardWorldApiKtorTest" time="0.386"/>
+  <testcase name="Тест с ошибочным id факультета" classname="WizardWorldApiKtorTest" time="0.386"/>
+  <testcase name="Тест на список заклинаний" classname="WizardWorldApiKtorTest" time="0.421"/>
+  <testcase name="Тест на получение факультета из списка" classname="WizardWorldApiKtorTest" time="0.737"/>
+  <testcase name="Тест на список зелий" classname="WizardWorldApiKtorTest" time="0.467"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

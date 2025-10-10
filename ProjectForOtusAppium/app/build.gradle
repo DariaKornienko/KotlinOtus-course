@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id("io.qameta.allure") version "2.12.0"
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "ru.otus.uiautomator"
+        testApplicationId "ru.otus.uiautomator.test"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    namespace = "ru.otus.uiautomator"
+
+    testOptions {
+        unitTests.all {
+            jvmArgs '--add-opens', 'java.base/java.lang=ALL-UNNAMED'
+        }
+    }
+
+}
+
+dependencies {
+    implementation "io.appium:java-client:6.0.0"
+
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.1'
+    testImplementation 'junit:junit:4.13.2'
+    //для обработки изображения
+    testImplementation 'im.bci:pngdecoder:0.13'
+    testImplementation("io.qameta.allure:allure-junit5:2.+")
+
+/*
+    testImplementation(kotlin("test"))
+    testImplementation("io.kotest:kotest-runner-junit5:5.9.0")
+    testImplementation("io.kotest:kotest-assertions-core:5.9.0")
+    testImplementation("io.kotest.extensions:kotest-extensions-allure:1.4.0")
+
+*/
+}
+
+allure {
+    version.set("2.29.0")
+    adapter {
+        autoconfigure.set(true)
+        frameworks {
+            junit5 {}
+        }
+    }
+}
